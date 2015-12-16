@@ -13,12 +13,13 @@ namespace TANK
     {
         private TcpClient client;
         public string ip { set; get; }
+        public string data { set; get; }
         private int port_send = 6000; //Data outgoing port
         private int port_recv = 7000; //Data incoming port
 
         private Boolean recieved = true; //Thread termination condition
 
-        private string data;
+        
         private Thread listnerThread;
         
         public static GameClient gameClient { set; get; }

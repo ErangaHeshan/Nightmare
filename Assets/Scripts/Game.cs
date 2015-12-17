@@ -79,7 +79,7 @@ public class Game : MonoBehaviour {
                     {
                         string[] temp = Regex.Split(lines[i + 1], ";");
                         string[] cord = Regex.Split(temp[1], ",");
-                        Vector3 position = new Vector3(-24.0f + 5 * Int32.Parse(cord[0]), 0.9f, -22.5f + 5 * Int32.Parse(cord[1]));
+                        Vector3 position = new Vector3(-22.5f + 5 * Int32.Parse(cord[1]), 0.9f, -22.5f + 5 * Int32.Parse(cord[0]));
                         
                         switch (i)
                         {
@@ -113,21 +113,21 @@ public class Game : MonoBehaviour {
                     for (int i = 0; i < bricks.Length; i++)
                     {
                         string[] cords = Regex.Split(bricks[i], ",");
-                        brickWall[i] = Instantiate(Resources.Load("BrickWall"), new Vector3(-22.5f + 5 * Int32.Parse(cords[0]), 2.5f, -22.5f + 5 * Int32.Parse(cords[1])), Quaternion.identity) as GameObject;
+                        brickWall[i] = Instantiate(Resources.Load("BrickWall"), new Vector3(-22.5f + 5 * Int32.Parse(cords[1]), 2.5f, -22.5f + 5 * Int32.Parse(cords[0])), Quaternion.identity) as GameObject;
                     }
                     //lines[3] - Stone
                     string[] stones = Regex.Split(lines[3], ";");
                     for (int i = 0; i < stones.Length; i++)
                     {
                         string[] cords = Regex.Split(stones[i], ",");
-                        stoneWall[i] = Instantiate(Resources.Load("StoneWall"), new Vector3(-22.5f + 5 * Int32.Parse(cords[0]), 2.5f, -22.5f + 5 * Int32.Parse(cords[1])), Quaternion.identity) as GameObject;
+                        stoneWall[i] = Instantiate(Resources.Load("StoneWall"), new Vector3(-22.5f + 5 * Int32.Parse(cords[1]), 2.5f, -22.5f + 5 * Int32.Parse(cords[0])), Quaternion.identity) as GameObject;
                     }
                     //lines[4] - Water
                     string[] waters = Regex.Split(lines[4], ";");
                     for (int i = 0; i < waters.Length; i++)
                     {
                         string[] cords = Regex.Split(waters[i], ",");
-                        water[i] = Instantiate(Resources.Load("Water"), new Vector3(-22.5f + 5 * Int32.Parse(cords[0]), 0.01f, -22.5f + 5 * Int32.Parse(cords[1])), Quaternion.identity) as GameObject;
+                        water[i] = Instantiate(Resources.Load("Water"), new Vector3(-22.5f + 5 * Int32.Parse(cords[1]), 0.01f, -22.5f + 5 * Int32.Parse(cords[0])), Quaternion.identity) as GameObject;
                     }
                 }
                 else if (lines[0].StartsWith("G"))

@@ -12,6 +12,10 @@ public class Game : MonoBehaviour {
     public GameObject[] brickWall = new GameObject[25];
     public GameObject[] stoneWall = new GameObject[25];
     public GameObject[] water = new GameObject[25];
+    public GameObject[] tank = new GameObject[5];   //tank[0] is client
+
+    //Store client's starting direction
+    enum Direction { North, East, South, West };
 
     // Use this for initialization
     void Start () {

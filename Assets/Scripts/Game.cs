@@ -14,8 +14,8 @@ public class Game : MonoBehaviour {
     public GameObject[] water = new GameObject[25];
     public GameObject[] tank = new GameObject[5];   //tank[0] is client
 
-    //Store client's starting direction
-    enum Direction { North, East, South, West };
+    
+    
 
     // Use this for initialization
     void Start () {
@@ -67,16 +67,40 @@ public class Game : MonoBehaviour {
             try
             {
                 serverString = game_client.data;
-                string[] lines = Regex.Split(serverString.Substring(0, serverString.Length - 1), ":");
+                string[] lines = Regex.Split(serverString.Substring(0, serverString.Length - 1),  ":" );
                 if (lines[0].StartsWith("S"))
                 {
+
                     //Console.WriteLine(lines[1]); //Name
                     //Console.WriteLine(lines[2]); //Cordinate
-                    string[] cord = Regex.Split(lines[2], ",");
-                    //tank.transform.position = new Vector3(-17, 0, -15);
-                    //tank.transform.position = new Vector3(-17 + 5 * Int32.Parse(cord[0]), 0, -15 + 5 * Int32.Parse(cord[1]));
-                    test.text = "Tank Created";
-                    //Console.WriteLine(lines[3]); //Direction
+                                      
+                    test.text = serverString;
+                    for (int i = 0; i < lines.Length - 1; i++)
+                    {
+                        string[] temp = Regex.Split(lines[i + 1], ";");
+                        string[] cord = Regex.Split(temp[1], ",");
+                        Vector3 position = new Vector3(-24.0f + 5 * Int32.Parse(cord[0]), 0.9f, -22.5f + 5 * Int32.Parse(cord[1]));
+                        
+                        switch (i)
+                        {
+                            case 0:
+                                tank[0] = Instantiate(Resources.Load("Tank1"), position, Quaternion.identity) as GameObject;
+                                break;
+                            case 1:
+                                tank[1] = Instantiate(Resources.Load("Tank2"), position, Quaternion.identity) as GameObject;
+                                break;
+                            case 2:
+                                tank[2] = Instantiate(Resources.Load("Tank3"), position, Quaternion.identity) as GameObject;
+                                break;
+                            case 3:
+                                tank[3] = Instantiate(Resources.Load("Tank4"), position, Quaternion.identity) as GameObject;
+                                break;
+                            case 4:
+                                tank[4] = Instantiate(Resources.Load("Tank5"), position, Quaternion.identity) as GameObject;
+                                break;
+                        }                        
+                    }
+                        //Console.WriteLine(lines[3]); //Direction
                     //Tank t = new Tank(lines[1], Int32.Parse(cord[0]), Int32.Parse(cord[1]));
                     //Arena.AddGameObject(t.x_cordinate, t.y_cordinate, t);
                 }

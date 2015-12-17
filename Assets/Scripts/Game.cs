@@ -69,7 +69,6 @@ public class Game : MonoBehaviour {
                     //Console.WriteLine(lines[1]); //Name
                     //Console.WriteLine(lines[2]); //Cordinate
                     string[] cord = Regex.Split(lines[2], ",");
-                    //GameObject tank = (GameObject)Instantiate(Resources.Load("Tank1"), new Vector3(-17f + 5 * Int32.Parse(cord[0]), 0f, -15f + 5 * Int32.Parse(cord[1])), Quaternion.identity);
                     //tank.transform.position = new Vector3(-17, 0, -15);
                     //tank.transform.position = new Vector3(-17 + 5 * Int32.Parse(cord[0]), 0, -15 + 5 * Int32.Parse(cord[1]));
                     test.text = "Tank Created";

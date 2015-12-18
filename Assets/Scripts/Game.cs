@@ -80,7 +80,6 @@ public class Game : MonoBehaviour {
                         string[] temp = Regex.Split(lines[i + 1], ";");
                         string[] cord = Regex.Split(temp[1], ",");
                         Vector3 position = new Vector3(-22.5f + 5 * Int32.Parse(cord[1]), 0.9f, -22.5f + 5 * Int32.Parse(cord[0]));
-                        
                         switch (i)
                         {
                             case 0:
@@ -98,7 +97,23 @@ public class Game : MonoBehaviour {
                             case 4:
                                 tank[4] = Instantiate(Resources.Load("Tank5"), position, Quaternion.identity) as GameObject;
                                 break;
-                        }                        
+                        }
+                        switch (Int32.Parse(temp[2]))
+                        {
+                            case 0:
+                                //tank[i].transform.Rotate(0f, 180f, 0f);
+                                //tank[i].
+                                break;
+                            case 1:
+                                //tank[i].transform.Rotate(0f, 270f, 0f);
+                                break;                                
+                            case 2:
+                                //tank[i].transform.Rotate(0f, 0f, 0f);
+                                break;                                
+                            case 3:
+                                //tank[i].transform.Rotate(0f, 90f, 0f);
+                                break;                                
+                        }
                     }
                         //Console.WriteLine(lines[3]); //Direction
                     //Tank t = new Tank(lines[1], Int32.Parse(cord[0]), Int32.Parse(cord[1]));
@@ -153,7 +168,9 @@ public class Game : MonoBehaviour {
                         {
                             string[] player = Regex.Split(lines[i], ";");
                             //Tank t = new Tank(player[0], Int32.Parse(player[2]));
-                            //string[] cord = Regex.Split(player[1], ",");
+                            string[] cord = Regex.Split(player[1], ",");
+                            Vector3 position = new Vector3(-22.5f + 5 * Int32.Parse(cord[1]), 0.9f, -22.5f + 5 * Int32.Parse(cord[0]));
+                            tank[i].transform.position = position;
                             //t.x_cordinate = Int32.Parse(cord[0]);
                             //t.y_cordinate = Int32.Parse(cord[1]);
                             //t.shot = Int32.Parse(player[3]);

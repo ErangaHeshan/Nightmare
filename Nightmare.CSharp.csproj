@@ -68,8 +68,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Connect.cs" />
-    <Compile Include="Assets\Scripts\CreateObject.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\GameClient.cs" />
     <Compile Include="Assets\Scripts\GameObject.cs" />

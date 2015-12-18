@@ -20,12 +20,14 @@ public class Game : MonoBehaviour {
 
         try
         {
+            game_client = new GameClient("127.0.0.1");
+            game_client.SendToServer("JOIN#");
             //brickWall[1] = Instantiate(Resources.Load("BrickWall"), new Vector3(-22.5f + 5 * 1, 2.5f, -22.5f + 5 * 1), Quaternion.identity) as GameObject;
             //brickWall[2] = Instantiate(Resources.Load("BrickWall"), new Vector3(-22.5f + 5 * 1, 2.5f, -22.5f + 5 * 2), Quaternion.identity) as GameObject;
             //stoneWall[1] = Instantiate(Resources.Load("StoneWall"), new Vector3(-22.5f + 5 * 2, 2.5f, -22.5f + 5 * 2), Quaternion.identity) as GameObject;
             //game_client = new GameClient("127.0.0.1");
             //game_client.SendToServer("JOIN#");
-
+            /*
             Vector3 psition = new Vector3(-22.5f + 5 * 2, 0.9f, -22.5f + 5 * 3);
             Vector3 p = new Vector3(-22.5f + 5.0f * 7f, 0.9f, -22.5f + 5.0f * 7f);
             GameObject t = Instantiate(Resources.Load("Tank1"), psition, Quaternion.identity) as GameObject;
@@ -44,7 +46,7 @@ public class Game : MonoBehaviour {
             //test.text = tank[0].gameObject.transform.position.ToString();
             //private GameObject T;
             //T = tank[0];
-
+            */
 
             //brickWall[0] = (GameObject)Instantiate( Resources.Load("BrickWall"), new Vector3(-22.5f + 5 * 1, 2.5f, -22.5f + 5 * 1), Quaternion.identity);
             //brickWall[1] = clone.GetComponent("MeshRenderer").renderer.enabled = false;
@@ -66,8 +68,8 @@ public class Game : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        //KeyboardInput();
-        //Decode();
+        KeyboardInput();
+        Decode();
         //tank[1] = Instantiate(Resources.Load("Tank1"),new Vector3(-22.5f + 5.0f * 7f, 0.9f, -22.5f + 5.0f * 7f), Quaternion.identity) as GameObject;
         //tank[1].transform.position.Set(-22.5f + 5.0f * 7f, 0.9f, -22.5f + 5.0f * 7f);
     }

@@ -9,13 +9,11 @@ public class Game : MonoBehaviour {
     private GameClient game_client;
     string serverString;
     public Text test;
-    public GameObject[] brickWall = new GameObject[25];
-    public GameObject[] stoneWall = new GameObject[25];
-    public GameObject[] water = new GameObject[25];
-    public GameObject[] tank = new GameObject[5];   //tank[0] is client
-
-    
-    
+    public static GameObject[] brickWall = new GameObject[25];
+    public static GameObject[] stoneWall = new GameObject[25];
+    public static GameObject[] water = new GameObject[25];
+    //public static GameObject[] tank = new GameObject[5];   //tank[0] is client
+    public static ArrayList tank = new ArrayList();
 
     // Use this for initialization
     void Start () {
@@ -25,8 +23,29 @@ public class Game : MonoBehaviour {
             //brickWall[1] = Instantiate(Resources.Load("BrickWall"), new Vector3(-22.5f + 5 * 1, 2.5f, -22.5f + 5 * 1), Quaternion.identity) as GameObject;
             //brickWall[2] = Instantiate(Resources.Load("BrickWall"), new Vector3(-22.5f + 5 * 1, 2.5f, -22.5f + 5 * 2), Quaternion.identity) as GameObject;
             //stoneWall[1] = Instantiate(Resources.Load("StoneWall"), new Vector3(-22.5f + 5 * 2, 2.5f, -22.5f + 5 * 2), Quaternion.identity) as GameObject;
-            game_client = new GameClient("127.0.0.1");
-            game_client.SendToServer("JOIN#");
+            //game_client = new GameClient("127.0.0.1");
+            //game_client.SendToServer("JOIN#");
+
+            Vector3 psition = new Vector3(-22.5f + 5 * 2, 0.9f, -22.5f + 5 * 3);
+            Vector3 p = new Vector3(-22.5f + 5.0f * 7f, 0.9f, -22.5f + 5.0f * 7f);
+            GameObject t = Instantiate(Resources.Load("Tank1"), psition, Quaternion.identity) as GameObject;
+            t.gameObject.GetComponent<Tank>().id = 0;
+            t.gameObject.GetComponent<Tank>().health = 100;
+            t.gameObject.GetComponent<Tank>().positionX = -22.5f + 5.0f * 7f;
+            t.gameObject.GetComponent<Tank>().positionY = -22.5f + 5.0f * 7f;
+            t.gameObject.GetComponent<Tank>().points = 0;
+            t.gameObject.GetComponent<Tank>().direction = Tank.Direction.North;
+
+
+            method(t);
+            
+
+
+            //test.text = tank[0].gameObject.transform.position.ToString();
+            //private GameObject T;
+            //T = tank[0];
+
+
             //brickWall[0] = (GameObject)Instantiate( Resources.Load("BrickWall"), new Vector3(-22.5f + 5 * 1, 2.5f, -22.5f + 5 * 1), Quaternion.identity);
             //brickWall[1] = clone.GetComponent("MeshRenderer").renderer.enabled = false;
             //brickWall[1] = (GameObject)Instantiate(Resources.Load("BrickWall"), new Vector3(-22.5f + 5 * 2, 2.5f, -22.5f + 5 * 2), Quaternion.identity);
@@ -40,10 +59,17 @@ public class Game : MonoBehaviour {
         
 	}
 	
+    GameObject method(GameObject tank)
+    {
+        tank.gameObject.transform.position = new Vector3(-22, 1, -12);
+        return tank;
+    }
 	// Update is called once per frame
 	void Update () {
-        KeyboardInput();
-        Decode();
+        //KeyboardInput();
+        //Decode();
+        //tank[1] = Instantiate(Resources.Load("Tank1"),new Vector3(-22.5f + 5.0f * 7f, 0.9f, -22.5f + 5.0f * 7f), Quaternion.identity) as GameObject;
+        //tank[1].transform.position.Set(-22.5f + 5.0f * 7f, 0.9f, -22.5f + 5.0f * 7f);
     }
 
     void KeyboardInput()
@@ -72,9 +98,8 @@ public class Game : MonoBehaviour {
                 {
 
                     //Console.WriteLine(lines[1]); //Name
-                    //Console.WriteLine(lines[2]); //Cordinate
-                                      
-                    test.text = serverString;
+                    //Console.WriteLine(lines[2]); //Cordinate                                     
+                    
                     for (int i = 0; i < lines.Length - 1; i++)
                     {
                         string[] temp = Regex.Split(lines[i + 1], ";");
@@ -169,8 +194,10 @@ public class Game : MonoBehaviour {
                             string[] player = Regex.Split(lines[i], ";");
                             //Tank t = new Tank(player[0], Int32.Parse(player[2]));
                             string[] cord = Regex.Split(player[1], ",");
+                            //test.text = cord[0];
+                            test.text = lines.Length.ToString();
                             Vector3 position = new Vector3(-22.5f + 5 * Int32.Parse(cord[1]), 0.9f, -22.5f + 5 * Int32.Parse(cord[0]));
-                            tank[i].transform.position = position;
+                            //tank[i].transform.position += new Vector3(5 * Int32.Parse(cord[1]), 0f, 5 * Int32.Parse(cord[0]));
                             //t.x_cordinate = Int32.Parse(cord[0]);
                             //t.y_cordinate = Int32.Parse(cord[1]);
                             //t.shot = Int32.Parse(player[3]);

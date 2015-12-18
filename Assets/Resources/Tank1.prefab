@@ -981,9 +981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529828ffd9e441342a5e02857469965a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  points: 0
-  direction: 0
 --- !u!135 &13509738
 SphereCollider:
   m_ObjectHideFlags: 1
